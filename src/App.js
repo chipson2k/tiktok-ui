@@ -1,27 +1,45 @@
-import logo from './logo.svg';
-import  './App.css';
-import Button from './component/Button'
+import { Fragment } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { publicRoutes } from '~/routes';
+import { defaultLayout } from '~/component/Layout';
+import DefaultLayout from './component/Layout/DefaultLayout';
 
 function App() {
-  return (
-    <div className="App">
-      <Button />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Routes>
+                    {publicRoutes.map((route, index) => {
+                        const Page = route.component;
+
+                        let Layout = DefaultLayout;
+                        // Nếu route.layout != null (true) thì Layout = route.layout,
+                        // ko thì mặc định DefaultLayout
+                        // Còn route.layout = null thì gán Fragment vào Layout
+                        // Fragment: là thẻ chỉ để chứa chứ ko sinh ra thẻ thật trong DOM
+                        if (route.layout) {
+                            Layout = route.layout;
+                        } else if (route.layout === null) {
+                            Layout = Fragment;
+                        }
+
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    // Truyền layout cho page => <Page /> là children của layout
+                                    <Layout>
+                                        <Page />
+                                    </Layout>
+                                }
+                            />
+                        );
+                    })}
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
