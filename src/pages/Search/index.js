@@ -1,3 +1,4 @@
+// Định nghĩa page Search
 function Search() {
     return <h2>Search page</h2>;
 }

@@ -1,8 +1,7 @@
 import { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from '~/routes';
-import { defaultLayout } from '~/component/Layout';
-import DefaultLayout from './component/Layout/DefaultLayout';
+import { DefaultLayout } from '~/components/Layout';
 
 function App() {
     return (
@@ -28,6 +27,8 @@ function App() {
                                 key={index}
                                 path={route.path}
                                 element={
+                                    // Layout là biến đc truyền layout tương ứng qua hàm if trên
+                                    // Từ đó dùng nó bao comp để comp nhận layout tương ứng
                                     // Truyền layout cho page => <Page /> là children của layout
                                     <Layout>
                                         <Page />

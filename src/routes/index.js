@@ -1,5 +1,6 @@
+// Nơi này đinh nghĩa các route vào từng danh sách để từ App.js lấy và map ra
 // import Layouts
-import { HeaderOnly } from '~/component/Layout';
+import { HeaderOnly } from '~/components/Layout';
 
 // import Pages
 import Following from '~/pages/Following';

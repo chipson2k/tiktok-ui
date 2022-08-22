@@ -1,4 +1,6 @@
-import Header from '~/component/Layout/components/Header';
+// Layout chỉ có phần header và content
+// children là nội dung content đc đưa và qua App.js
+import Header from '~/components/Layout/components/Header';
 function DefaultLayout({ children }) {
     return (
         <div>

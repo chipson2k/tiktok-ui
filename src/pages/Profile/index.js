@@ -1,3 +1,4 @@
+// Định nghĩa page Profile
 function Profile() {
     return <h2>Profile page</h2>;
 }
