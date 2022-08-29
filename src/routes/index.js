@@ -13,7 +13,9 @@ import Search from '~/pages/Search';
 const publicRoutes = [
     { path: '/', component: Home },
     { path: '/following', component: Following },
-    { path: '/profile', component: Profile },
+    // khi url có dạng @:nickname (@: cố định, nickname: nhận từ input truyền vào searchValue)
+    // thì chạy vô trang Profile
+    { path: '/@:nickname', component: Profile },
     { path: '/upload', component: Upload, layout: HeaderOnly },
     { path: '/search', component: Search, layout: null },
 ];
